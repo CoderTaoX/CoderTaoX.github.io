@@ -1,0 +1,266 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FancyScrollView的使用方法 | 君禹渊的个人博客</title><meta name="keywords" content="FancyScrollView,Unity"><meta name="author" content="君禹渊,taoxu2870@outlook.com"><meta name="copyright" content="君禹渊"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="FancyScrollView，一个通用的Unity ScrollView组件  FancyScrollView 一个通用的ScrollView组件，可实现高度灵活的Cell动画。还支持无限滚动。  工作原理FancyScrollView在更新单元格的位置时，将显示在屏幕上的范围内的值赋予每一个单元格。在单元格侧以0.0 ~ 1.0的值为基础，可以自由控制滚动中的外观。 使用方法最简方法  向单">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FancyScrollView的使用方法">
+<meta property="og:url" content="http://junyuyuan.top/2018/07/05/FancyScrollView%20%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="君禹渊的个人博客">
+<meta property="og:description" content="FancyScrollView，一个通用的Unity ScrollView组件  FancyScrollView 一个通用的ScrollView组件，可实现高度灵活的Cell动画。还支持无限滚动。  工作原理FancyScrollView在更新单元格的位置时，将显示在屏幕上的范围内的值赋予每一个单元格。在单元格侧以0.0 ~ 1.0的值为基础，可以自由控制滚动中的外观。 使用方法最简方法  向单">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2020-03-24-post-bg-keybord.jpg">
+<meta property="article:published_time" content="2018-07-05T02:51:06.000Z">
+<meta property="article:modified_time" content="2021-05-08T02:53:34.874Z">
+<meta property="article:author" content="君禹渊">
+<meta property="article:tag" content="FancyScrollView">
+<meta property="article:tag" content="Unity">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2020-03-24-post-bg-keybord.jpg"><link rel="shortcut icon" href="/img/favicon.svg"><link rel="canonical" href="http://junyuyuan.top/2018/07/05/FancyScrollView%20%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 君禹渊","link":"链接: ","source":"来源: 君禹渊的个人博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'FancyScrollView的使用方法',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-05-08 10:53:34'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2020-03-24-post-bg-keybord.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">君禹渊的个人博客</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">FancyScrollView的使用方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2018-07-05T02:51:06.000Z" title="发表于 2018-07-05 10:51:06">2018-07-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-05-08T02:53:34.874Z" title="更新于 2021-05-08 10:53:34">2021-05-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Unity/">Unity</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="FancyScrollView的使用方法"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>FancyScrollView，一个通用的Unity ScrollView组件</p>
+</blockquote>
+<h1 id="FancyScrollView"><a href="#FancyScrollView" class="headerlink" title="FancyScrollView "></a>FancyScrollView <a target="_blank" rel="noopener" href="http://mit-license.org/"><img src="https://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat" alt="License"></a></h1><p>一个通用的ScrollView组件，可实现高度灵活的Cell动画。还支持无限滚动。</p>
+<p><img src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2019-01-24-141545.jpg" alt="效果图"><br><img src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2019-01-24-141545.gif" alt="效果图"><br><img src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2019-01-24-141546.gif" alt="效果图"></p>
+<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><p>FancyScrollView在更新单元格的位置时，将显示在屏幕上的范围内的值赋予每一个单元格。在单元格侧以0.0 ~ 1.0的值为基础，可以自由控制滚动中的外观。</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>最简方法</p>
+<ul>
+<li>向单元格传递数据的对象</li>
+<li>滚动视图</li>
+<li>单元格</li>
+</ul>
+<p>以上是必须实现的方法。</p>
+<h3 id="相关脚本"><a href="#相关脚本" class="headerlink" title="相关脚本"></a>相关脚本</h3><p>定义用于将数据传递给单元格的对象。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyCellDto</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">string</span> Message;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>继承FancyScrollView，实现自己的滚动视图。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> System.Linq;</span><br><span class="line"><span class="keyword">using</span> FancyScrollView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyScrollView</span> : <span class="title">FancyScrollView</span>&lt;<span class="title">MyCellDto</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">SerializeField</span>]</span><br><span class="line">    ScrollPositionController scrollPositionController;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Awake</span>(<span class="params"></span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">base</span>.cellData = Enumerable.Range(<span class="number">0</span>, <span class="number">50</span>)</span><br><span class="line">            .Select(i =&gt; <span class="keyword">new</span> MyCellDto &#123; Message = <span class="string">&quot;Cell &quot;</span> + i &#125;)</span><br><span class="line">            .ToList();</span><br><span class="line"></span><br><span class="line">        scrollPositionController.SetDataCount(<span class="keyword">base</span>.cellData.Count);</span><br><span class="line">        scrollPositionController.OnUpdatePosition(<span class="keyword">base</span>.UpdatePosition);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>继承FancyScrollViewCell并实现自己的单元格</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"><span class="keyword">using</span> UnityEngine.UI;</span><br><span class="line"><span class="keyword">using</span> FancyScrollView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">MyScrollViewCell</span> : <span class="title">FancyScrollViewCell</span>&lt;<span class="title">MyCellDto</span>&gt;</span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">SerializeField</span>]</span><br><span class="line">    Text message;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">UpdateContent</span>(<span class="params">MyCellDto itemData</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        message.text = itemData.Message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">UpdatePosition</span>(<span class="params"><span class="built_in">float</span> position</span>)</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// position 是 0.0 ~ 1.0 的值</span></span><br><span class="line">        <span class="comment">// position 可以自由控制单元格的外观</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Inspector设置"><a href="#Inspector设置" class="headerlink" title="Inspector设置"></a>Inspector设置</h3><p><img src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2019-01-24-141547.jpg" alt="设置"></p>
+<h4 id="My-Scroll-View"><a href="#My-Scroll-View" class="headerlink" title="My Scroll View"></a>My Scroll View</h4><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Cell Interval</td>
+<td align="left">将单元格之间的间隔指定为 float.Epsilon ~ 1.0之间。</td>
+</tr>
+<tr>
+<td align="left">Cell Offset</td>
+<td align="left">指定单元格的偏移。例如，指定了0.5，在滚动位置为0的情况下，最初的单元格的位置是0.5。</td>
+</tr>
+<tr>
+<td align="left">Loop</td>
+<td align="left">开启后实现无限滚动。</td>
+</tr>
+<tr>
+<td align="left">Cell Base</td>
+<td align="left">指定单元格的Prefab。</td>
+</tr>
+<tr>
+<td align="left">Cell Container</td>
+<td align="left">指定单元格的父元素。</td>
+</tr>
+</tbody></table>
+<h4 id="Scroll-Position-Controller"><a href="#Scroll-Position-Controller" class="headerlink" title="Scroll Position Controller"></a>Scroll Position Controller</h4><table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Viewport</td>
+<td align="left">指定作为视图窗口的RectTransform。在指定的RectTransform的范围内进行手势的检测。</td>
+</tr>
+<tr>
+<td align="left">Direction Of Recognize</td>
+<td align="left">将识别手势的方向指定为Vertical或Horisontal。</td>
+</tr>
+<tr>
+<td align="left">Movement Type</td>
+<td align="left">指定内容超过滚动范围的移动时使用的行为。</td>
+</tr>
+<tr>
+<td align="left">Scroll Sensitivity</td>
+<td align="left">指定滚动的灵敏度。</td>
+</tr>
+<tr>
+<td align="left">Inertia</td>
+<td align="left">指定惯性的打开/关闭。</td>
+</tr>
+<tr>
+<td align="left">Deceleration Rate</td>
+<td align="left">Inertia 只有在打开的情况下有效。指定减速率。</td>
+</tr>
+<tr>
+<td align="left">Snap - Enable</td>
+<td align="left">Snap 如果有效的话，请打开。</td>
+</tr>
+<tr>
+<td align="left">Snap - Velocity Threshold</td>
+<td align="left">指定Snap开始的阈值。</td>
+</tr>
+<tr>
+<td align="left">Snap - Duration</td>
+<td align="left">用秒数指定Snap时的移动时间。</td>
+</tr>
+<tr>
+<td align="left">Data Count</td>
+<td align="left">需要展示的数据总数量，一般从脚本内设置。</td>
+</tr>
+</tbody></table>
+<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><h3 id="即使数据的数量很多，展示也没有问题么？"><a href="#即使数据的数量很多，展示也没有问题么？" class="headerlink" title="即使数据的数量很多，展示也没有问题么？"></a>即使数据的数量很多，展示也没有问题么？</h3><p>因为单元格只生成显示所需的数量，所以数据件数对性能的影响很小。<br>比起数据的数量。每个单元格之间的间隔（同时存在的单元格的数量）和单元格的展示效果，对展示有一定影响。</p>
+<h3 id="我能够自己控制滚动位置么？"><a href="#我能够自己控制滚动位置么？" class="headerlink" title="我能够自己控制滚动位置么？"></a>我能够自己控制滚动位置么？</h3><p>滚动的位置可以自由控制。可以将例子中使用的ScrollPositionController 更换成自己的实现。</p>
+<h3 id="可以接收到在单元格中发生的事件么？"><a href="#可以接收到在单元格中发生的事件么？" class="headerlink" title="可以接收到在单元格中发生的事件么？"></a>可以接收到在单元格中发生的事件么？</h3><p>可以使用在单元格中发生的所有事件。<br>请参考例子（<a target="_blank" rel="noopener" href="https://github.com/setchi/FancyScrollView/tree/master/Assets/FancyScrollView/Examples/02_CellEventHandling">Examples/02_CellEventHandling</a>）。</p>
+<h3 id="能够使用单元格无限滚动么？"><a href="#能够使用单元格无限滚动么？" class="headerlink" title="能够使用单元格无限滚动么？"></a>能够使用单元格无限滚动么？</h3><p>对于使用无限滚动。步骤如下。</p>
+<ol>
+<li>将ScrollView 的「Loop」打开后，将单元格置于循环状态。</li>
+<li>在使用例子中 ScrollPositionController 的情况下，将「Movement Type」设定为「Unrestricted」，就变成无限滚动了。</li>
+</ol>
+<p><img src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2019-01-24-141548.jpg" alt="设置"></p>
+<p>请参考例子（<a target="_blank" rel="noopener" href="https://github.com/setchi/FancyScrollView/tree/master/Assets/FancyScrollView/Examples/03_InfiniteScroll">Examples/03_InfiniteScroll</a>）。</p>
+<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><p>Unity 2017.2.0f3</p>
+<h2 id="LICENSE"><a href="#LICENSE" class="headerlink" title="LICENSE"></a>LICENSE</h2><p>MIT</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:taoxu2870@outlook.com">君禹渊</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://junyuyuan.top/2018/07/05/FancyScrollView%20%E7%9A%84%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">http://junyuyuan.top/2018/07/05/FancyScrollView 的使用方法/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://junyuyuan.top" target="_blank">君禹渊的个人博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/FancyScrollView/">FancyScrollView</a><a class="post-meta__tags" href="/tags/Unity/">Unity</a></div><div class="post_share"><div class="social-share" data-image="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2020-03-24-post-bg-keybord.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2018/07/11/Unity%20%E9%9B%86%E6%88%90%E7%AC%AC%E4%B8%89%E6%96%B9%20SDK%20%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/"><img class="prev-cover" src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2020-03-24-post-bg-coffee.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Unity集成第三方SDK问题总结</div></div></a></div><div class="next-post pull-right"><a href="/2018/06/26/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%AE%BF%E5%AE%A2%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/"><img class="next-cover" src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2020-03-24-post-bg-YesOrNo.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Jekyll+Disqus 给个人博客添加评论</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2018/06/22/PostProcessBuild 的使用方法/" title="Unity3D 通过代码控制编译 XCode 工程"><img class="cover" src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2020-03-24-post-bg-iWatch.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-06-22</div><div class="title">Unity3D 通过代码控制编译 XCode 工程</div></div></a></div><div><a href="/2018/08/04/PostProcessBuild 的使用方法（续）/" title="PostProcessBuild 的使用方法（续）"><img class="cover" src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2020-03-24-post-bg-debug.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2018-08-04</div><div class="title">PostProcessBuild 的使用方法（续）</div></div></a></div><div><a href="/2019/09/27/Unity Encoding XXX 错误/" title="Unity Encoding XXX 错误"><img class="cover" src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2020-03-24-post-bg-BJJ.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2019-09-27</div><div class="title">Unity Encoding XXX 错误</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">君禹渊</div><div class="author-info__description">Me.Lerp(Coder, GameProducer, Time);</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">23</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/junyuyuan"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/junyuyuan" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:taoxu2870@outlook.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#FancyScrollView"><span class="toc-number">1.</span> <span class="toc-text">FancyScrollView </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.1.</span> <span class="toc-text">工作原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.</span> <span class="toc-text">使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E8%84%9A%E6%9C%AC"><span class="toc-number">1.2.1.</span> <span class="toc-text">相关脚本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Inspector%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.2.2.</span> <span class="toc-text">Inspector设置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#My-Scroll-View"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">My Scroll View</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Scroll-Position-Controller"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">Scroll Position Controller</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Q-amp-A"><span class="toc-number">1.3.</span> <span class="toc-text">Q&amp;A</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B3%E4%BD%BF%E6%95%B0%E6%8D%AE%E7%9A%84%E6%95%B0%E9%87%8F%E5%BE%88%E5%A4%9A%EF%BC%8C%E5%B1%95%E7%A4%BA%E4%B9%9F%E6%B2%A1%E6%9C%89%E9%97%AE%E9%A2%98%E4%B9%88%EF%BC%9F"><span class="toc-number">1.3.1.</span> <span class="toc-text">即使数据的数量很多，展示也没有问题么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E8%83%BD%E5%A4%9F%E8%87%AA%E5%B7%B1%E6%8E%A7%E5%88%B6%E6%BB%9A%E5%8A%A8%E4%BD%8D%E7%BD%AE%E4%B9%88%EF%BC%9F"><span class="toc-number">1.3.2.</span> <span class="toc-text">我能够自己控制滚动位置么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E4%BB%A5%E6%8E%A5%E6%94%B6%E5%88%B0%E5%9C%A8%E5%8D%95%E5%85%83%E6%A0%BC%E4%B8%AD%E5%8F%91%E7%94%9F%E7%9A%84%E4%BA%8B%E4%BB%B6%E4%B9%88%EF%BC%9F"><span class="toc-number">1.3.3.</span> <span class="toc-text">可以接收到在单元格中发生的事件么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%83%BD%E5%A4%9F%E4%BD%BF%E7%94%A8%E5%8D%95%E5%85%83%E6%A0%BC%E6%97%A0%E9%99%90%E6%BB%9A%E5%8A%A8%E4%B9%88%EF%BC%9F"><span class="toc-number">1.3.4.</span> <span class="toc-text">能够使用单元格无限滚动么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-number">1.4.</span> <span class="toc-text">开发环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LICENSE"><span class="toc-number">1.5.</span> <span class="toc-text">LICENSE</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/07/21/Roblox%E5%85%A5%E9%97%A8/" title="Roblox 入门"><img src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/com.roblox.client.sc0.2018-03-05-11-08-30.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Roblox 入门"/></a><div class="content"><a class="title" href="/2020/07/21/Roblox%E5%85%A5%E9%97%A8/" title="Roblox 入门">Roblox 入门</a><time datetime="2020-07-21T02:51:06.000Z" title="发表于 2020-07-21 10:51:06">2020-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/03/26/%E7%96%AB%E6%83%85-%E5%9C%A8%E5%AE%B6%E5%8A%9E%E5%85%AC-%E5%88%86%E6%89%8B-%E5%85%BB%E7%8C%AB/" title="疫情&amp;在家办公&amp;分手&amp;养猫"><img src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2020-03-25-IMG_0715.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="疫情&amp;在家办公&amp;分手&amp;养猫"/></a><div class="content"><a class="title" href="/2020/03/26/%E7%96%AB%E6%83%85-%E5%9C%A8%E5%AE%B6%E5%8A%9E%E5%85%AC-%E5%88%86%E6%89%8B-%E5%85%BB%E7%8C%AB/" title="疫情&amp;在家办公&amp;分手&amp;养猫">疫情&amp;在家办公&amp;分手&amp;养猫</a><time datetime="2020-03-26T02:51:06.000Z" title="发表于 2020-03-26 10:51:06">2020-03-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/09/27/Unity%20Encoding%20XXX%20%E9%94%99%E8%AF%AF/" title="Unity Encoding XXX 错误"><img src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2020-03-24-post-bg-BJJ.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity Encoding XXX 错误"/></a><div class="content"><a class="title" href="/2019/09/27/Unity%20Encoding%20XXX%20%E9%94%99%E8%AF%AF/" title="Unity Encoding XXX 错误">Unity Encoding XXX 错误</a><time datetime="2019-09-27T02:51:06.000Z" title="发表于 2019-09-27 10:51:06">2019-09-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/04/10/%E5%9C%A8%20Git%20%E4%B8%8A%E2%80%9C%E6%AF%81%E5%B0%B8%E7%81%AD%E8%BF%B9%E2%80%9D/" title="在 Git 上“毁尸灭迹”"><img src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2020-03-24-post-bg-mma-5.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在 Git 上“毁尸灭迹”"/></a><div class="content"><a class="title" href="/2019/04/10/%E5%9C%A8%20Git%20%E4%B8%8A%E2%80%9C%E6%AF%81%E5%B0%B8%E7%81%AD%E8%BF%B9%E2%80%9D/" title="在 Git 上“毁尸灭迹”">在 Git 上“毁尸灭迹”</a><time datetime="2019-04-10T02:51:06.000Z" title="发表于 2019-04-10 10:51:06">2019-04-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2019/01/27/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E7%9A%84%E6%8A%98%E7%8E%AB%E7%91%B0%E6%8C%87%E5%8D%97/" title="程序猿的折玫瑰指南"><img src="https://jy-blog.oss-cn-beijing.aliyuncs.com/blog/2020-03-24-post-sample-image.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="程序猿的折玫瑰指南"/></a><div class="content"><a class="title" href="/2019/01/27/%E7%A8%8B%E5%BA%8F%E7%8C%BF%E7%9A%84%E6%8A%98%E7%8E%AB%E7%91%B0%E6%8C%87%E5%8D%97/" title="程序猿的折玫瑰指南">程序猿的折玫瑰指南</a><time datetime="2019-01-27T02:51:06.000Z" title="发表于 2019-01-27 10:51:06">2019-01-27</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2016 - 2021 By 君禹渊</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a target="_blank" rel="noopener" href="https://butterfly.js.org/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
